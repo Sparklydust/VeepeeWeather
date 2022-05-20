@@ -95,6 +95,7 @@
 				2A40D4FF2838535200F7D542 /* Navigations */,
 				2A40D509283856C000F7D542 /* Protocols */,
 				2A40D5062838567700F7D542 /* Services */,
+				2A40D50F2838603000F7D542 /* Views */,
 			);
 			path = VeepeeWeather;
 			sourceTree = "<group>";
@@ -182,6 +183,13 @@
 				2A40D50B2838572500F7D542 /* NavigationProtocol.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		2A40D50F2838603000F7D542 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
