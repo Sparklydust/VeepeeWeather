@@ -14,6 +14,11 @@
 		2A40D4F228384ED300F7D542 /* VeepeeWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40D4F128384ED300F7D542 /* VeepeeWeatherTests.swift */; };
 		2A40D4FC28384FE700F7D542 /* VeepeeWeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40D4FB28384FE700F7D542 /* VeepeeWeatherAppTests.swift */; };
 		2A40D4FE283850CE00F7D542 /* VeepeeWeatherMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40D4FD283850CE00F7D542 /* VeepeeWeatherMain.swift */; };
+		2A40D502283854B900F7D542 /* TabBarNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40D501283854B900F7D542 /* TabBarNavigationView.swift */; };
+		2A40D5052838560C00F7D542 /* NavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40D5042838560C00F7D542 /* NavigationItem.swift */; };
+		2A40D5082838569800F7D542 /* NavigationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40D5072838569800F7D542 /* NavigationService.swift */; };
+		2A40D50C2838572500F7D542 /* NavigationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40D50B2838572500F7D542 /* NavigationProtocol.swift */; };
+		2A40D50E28385B7700F7D542 /* SideBarNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40D50D28385B7700F7D542 /* SideBarNavigationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +42,11 @@
 		2A40D4F928384EF800F7D542 /* Development.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Development.xctestplan; sourceTree = "<group>"; };
 		2A40D4FB28384FE700F7D542 /* VeepeeWeatherAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeepeeWeatherAppTests.swift; sourceTree = "<group>"; };
 		2A40D4FD283850CE00F7D542 /* VeepeeWeatherMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeepeeWeatherMain.swift; sourceTree = "<group>"; };
+		2A40D501283854B900F7D542 /* TabBarNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarNavigationView.swift; sourceTree = "<group>"; };
+		2A40D5042838560C00F7D542 /* NavigationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationItem.swift; sourceTree = "<group>"; };
+		2A40D5072838569800F7D542 /* NavigationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationService.swift; sourceTree = "<group>"; };
+		2A40D50B2838572500F7D542 /* NavigationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationProtocol.swift; sourceTree = "<group>"; };
+		2A40D50D28385B7700F7D542 /* SideBarNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarNavigationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,10 +89,12 @@
 		2A40D4DC2838498200F7D542 /* VeepeeWeather */ = {
 			isa = PBXGroup;
 			children = (
+				2A40D5002838544600F7D542 /* Assets */,
+				2A40D5032838552300F7D542 /* Enums */,
 				2A40D4FA28384FC600F7D542 /* Main */,
-				2A40D4DF2838498200F7D542 /* ContentView.swift */,
-				2A40D4E12838498200F7D542 /* Assets.xcassets */,
-				2A40D4E32838498200F7D542 /* Preview Content */,
+				2A40D4FF2838535200F7D542 /* Navigations */,
+				2A40D509283856C000F7D542 /* Protocols */,
+				2A40D5062838567700F7D542 /* Services */,
 			);
 			path = VeepeeWeather;
 			sourceTree = "<group>";
@@ -119,6 +131,57 @@
 				2A40D4FD283850CE00F7D542 /* VeepeeWeatherMain.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		2A40D4FF2838535200F7D542 /* Navigations */ = {
+			isa = PBXGroup;
+			children = (
+				2A40D4DF2838498200F7D542 /* ContentView.swift */,
+				2A40D501283854B900F7D542 /* TabBarNavigationView.swift */,
+				2A40D50D28385B7700F7D542 /* SideBarNavigationView.swift */,
+			);
+			path = Navigations;
+			sourceTree = "<group>";
+		};
+		2A40D5002838544600F7D542 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				2A40D4E32838498200F7D542 /* Preview Content */,
+				2A40D4E12838498200F7D542 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		2A40D5032838552300F7D542 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				2A40D5042838560C00F7D542 /* NavigationItem.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		2A40D5062838567700F7D542 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2A40D5072838569800F7D542 /* NavigationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		2A40D509283856C000F7D542 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2A40D50A283856EC00F7D542 /* Navigation */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		2A40D50A283856EC00F7D542 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				2A40D50B2838572500F7D542 /* NavigationProtocol.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,10 +284,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A40D5052838560C00F7D542 /* NavigationItem.swift in Sources */,
 				2A40D4FC28384FE700F7D542 /* VeepeeWeatherAppTests.swift in Sources */,
 				2A40D4FE283850CE00F7D542 /* VeepeeWeatherMain.swift in Sources */,
 				2A40D4E02838498200F7D542 /* ContentView.swift in Sources */,
+				2A40D502283854B900F7D542 /* TabBarNavigationView.swift in Sources */,
+				2A40D50C2838572500F7D542 /* NavigationProtocol.swift in Sources */,
 				2A40D4DE2838498200F7D542 /* VeepeeWeatherApp.swift in Sources */,
+				2A40D5082838569800F7D542 /* NavigationService.swift in Sources */,
+				2A40D50E28385B7700F7D542 /* SideBarNavigationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,7 +436,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"VeepeeWeather/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"VeepeeWeather/Assets/Preview Content\"";
 				DEVELOPMENT_TEAM = P8UNJX8SHV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -397,7 +465,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"VeepeeWeather/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"VeepeeWeather/Assets/Preview Content\"";
 				DEVELOPMENT_TEAM = P8UNJX8SHV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

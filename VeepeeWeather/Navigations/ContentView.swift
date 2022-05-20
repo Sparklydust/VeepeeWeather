@@ -7,11 +7,18 @@
 
 import SwiftUI
 
+/// Root of the iOS and iPadOS views.
 struct ContentView: View {
 
+  @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
   var body: some View {
-    Text("Hello, Veepee!")
-      .padding()
+    if horizontalSizeClass == .compact {
+      TabBarNavigationView() // iPhone
+    }
+    else {
+      SideBarNavigationView() // iPad
+    }
   }
 }
 
@@ -31,5 +38,7 @@ struct ContentView_Previews: PreviewProvider {
   }
 }
 
+/// Canvas of an iPhone for SwiftUI previews
 public let iPhone = "iPhone 13 Pro"
+/// Canvas of an iPad for SwiftUI previews
 public let iPad = "iPad Pro (11-inch) (3rd generation)"
