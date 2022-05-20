@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "4B7A6B05-6A34-4171-95A6-8CA280B266AA",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "language" : "en",
+    "region" : "FR",
+    "testExecutionOrdering" : "random",
+    "testTimeoutsEnabled" : true,
+    "uiTestingScreenshotsLifetime" : "keepNever",
+    "userAttachmentLifetime" : "keepNever"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:VeepeeWeather.xcodeproj",
+        "identifier" : "2A40D4EE28384ED300F7D542",
+        "name" : "VeepeeWeatherTests"
+      }
+    }
+  ],
+  "version" : 1
+}

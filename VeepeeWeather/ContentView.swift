@@ -22,11 +22,14 @@ struct ContentView_Previews: PreviewProvider {
     Group {
       ContentView()
         .previewDevice(
-          PreviewDevice(rawValue: "iPhone 13 Pro"))
+          PreviewDevice(rawValue: iPhone))
 
       ContentView()
         .previewDevice(
-          PreviewDevice(rawValue: "iPad Pro (11-inch) (3rd generation)"))
+          PreviewDevice(rawValue: iPad))
     }
   }
 }
+
+public let iPhone = "iPhone 13 Pro"
+public let iPad = "iPad Pro (11-inch) (3rd generation)"
