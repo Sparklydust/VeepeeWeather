@@ -13,9 +13,14 @@ import SwiftUI
 /// not under tests.
 struct VeepeeWeatherApp: App {
 
+  // MARK: - Services
+  @StateObject var coreDataService = CoreDataService()
+
   var body: some Scene {
     WindowGroup {
       ContentView()
+        .environment(\.managedObjectContext,
+                      coreDataService.persistentContainer.viewContext)
     }
   }
 }

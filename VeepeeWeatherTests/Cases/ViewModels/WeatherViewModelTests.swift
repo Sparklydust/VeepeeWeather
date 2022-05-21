@@ -11,19 +11,26 @@ import XCTest
 class WeatherViewModelTests: XCTestCase {
 
   var sut: WeatherViewModel!
+
+  var coreDataServiceMock: CoreDataService!
   var urlSessionMock: URLSessionMock!
   var serverSideServiceMock: ServerSideServiceMock!
 
   override func setUpWithError() throws {
     try super.setUpWithError()
+    coreDataServiceMock = CoreDataService(inMemory: true)
     urlSessionMock = URLSessionMock()
     serverSideServiceMock = ServerSideServiceMock(urlSession: urlSessionMock)
-    sut = WeatherViewModel(serverSideService: serverSideServiceMock)
+
+    sut = WeatherViewModel(
+      coreDataService: coreDataServiceMock,
+      serverSideService: serverSideServiceMock)
   }
 
   override func tearDownWithError() throws {
     serverSideServiceMock = .none
     urlSessionMock = .none
+    coreDataServiceMock = .none
     sut = .none
     try super.tearDownWithError()
   }

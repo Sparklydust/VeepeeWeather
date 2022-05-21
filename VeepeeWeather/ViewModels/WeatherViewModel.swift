@@ -14,13 +14,16 @@ final class WeatherViewModel: ObservableObject {
   @Published var forecast: ForecastData?
 
   // Services
+  var coreDataService: CoreDataService
   var serverSideService: ServerSideProtocol
 
   // UI Levers
   @Published var isLoading = false
   @Published var weatherAlert: WeatherAlert = .unknown
 
-  init(serverSideService: ServerSideProtocol = ServerSideService()) {
+  init(coreDataService: CoreDataService = CoreDataService(),
+       serverSideService: ServerSideProtocol = ServerSideService()) {
+    self.coreDataService = coreDataService
     self.serverSideService = serverSideService
   }
 }

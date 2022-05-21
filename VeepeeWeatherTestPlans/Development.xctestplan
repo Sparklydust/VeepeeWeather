@@ -2,9 +2,41 @@
   "configurations" : [
     {
       "id" : "4B7A6B05-6A34-4171-95A6-8CA280B266AA",
-      "name" : "Configuration 1",
+      "name" : "Development Settings",
       "options" : {
 
+      }
+    },
+    {
+      "enabled" : false,
+      "id" : "9D3C1518-C260-4B22-9094-EC5BFE2953BA",
+      "name" : "CoreData Arguments Settings",
+      "options" : {
+        "commandLineArgumentEntries" : [
+          {
+            "argument" : "-UNITTEST"
+          },
+          {
+            "argument" : "-com.apple.CoreData.SQLDebug 1"
+          },
+          {
+            "argument" : "-com.apple.CoreData.ConcurrencyDebug 1"
+          }
+        ],
+        "environmentVariableEntries" : [
+          {
+            "key" : "SQLITE_ENABLE_THREAD_ASSERTIONS",
+            "value" : "1"
+          },
+          {
+            "key" : "SQLITE_AUTO_TRACE",
+            "value" : "1"
+          },
+          {
+            "key" : "SQLITE_ENABLE_FILE_ASSERTIONS",
+            "value" : "1"
+          }
+        ]
       }
     }
   ],

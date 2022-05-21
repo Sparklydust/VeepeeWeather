@@ -35,6 +35,8 @@
 		2A40D53D2839103700F7D542 /* WeatherAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40D53C2839103700F7D542 /* WeatherAlert.swift */; };
 		2A40D54428396E5600F7D542 /* MainProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40D54328396E5600F7D542 /* MainProgressView.swift */; };
 		2A40D54728396F3400F7D542 /* Color+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40D54628396F3400F7D542 /* Color+Name.swift */; };
+		2A40D54B283979F600F7D542 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A40D549283979F600F7D542 /* CoreDataModel.xcdatamodeld */; };
+		2A40D54D28397A1000F7D542 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40D54C28397A1000F7D542 /* CoreDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,8 @@
 		2A40D53E2839173700F7D542 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A40D54328396E5600F7D542 /* MainProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProgressView.swift; sourceTree = "<group>"; };
 		2A40D54628396F3400F7D542 /* Color+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Name.swift"; sourceTree = "<group>"; };
+		2A40D54A283979F600F7D542 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		2A40D54C28397A1000F7D542 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +132,6 @@
 				2A40D54528396EFF00F7D542 /* Extensions */,
 				2A40D4FA28384FC600F7D542 /* Main */,
 				2A40D518283871BA00F7D542 /* Models */,
-				2A40D4FF2838535200F7D542 /* Navigations */,
 				2A40D509283856C000F7D542 /* Protocols */,
 				2A40D5062838567700F7D542 /* Services */,
 				2A40D51D283876C800F7D542 /* ViewModels */,
@@ -205,6 +208,7 @@
 		2A40D5062838567700F7D542 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				2A40D5482839734600F7D542 /* CoreData */,
 				2A40D5312838EF0700F7D542 /* Navigation */,
 				2A40D5302838EEFF00F7D542 /* ServerSide */,
 			);
@@ -233,6 +237,7 @@
 			children = (
 				2A40D54128396E0300F7D542 /* Components */,
 				2A40D5102838651900F7D542 /* NavBarItems */,
+				2A40D4FF2838535200F7D542 /* Navigations */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -402,6 +407,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		2A40D5482839734600F7D542 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				2A40D54C28397A1000F7D542 /* CoreDataService.swift */,
+				2A40D549283979F600F7D542 /* CoreDataModel.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -510,6 +524,7 @@
 				2A40D4FC28384FE700F7D542 /* VeepeeWeatherAppTests.swift in Sources */,
 				2A40D4FE283850CE00F7D542 /* VeepeeWeatherMain.swift in Sources */,
 				2A40D4E02838498200F7D542 /* ContentView.swift in Sources */,
+				2A40D54D28397A1000F7D542 /* CoreDataService.swift in Sources */,
 				2A40D51C2838747A00F7D542 /* ServerSideError.swift in Sources */,
 				2A40D502283854B900F7D542 /* TabBarNavigationView.swift in Sources */,
 				2A40D5122838654800F7D542 /* WeatherView.swift in Sources */,
@@ -517,6 +532,7 @@
 				2A40D51428386DCB00F7D542 /* ServerSideService.swift in Sources */,
 				2A40D51F283876F200F7D542 /* WeatherViewModel.swift in Sources */,
 				2A40D53D2839103700F7D542 /* WeatherAlert.swift in Sources */,
+				2A40D54B283979F600F7D542 /* CoreDataModel.xcdatamodeld in Sources */,
 				2A40D50C2838572500F7D542 /* NavigationProtocol.swift in Sources */,
 				2A40D4DE2838498200F7D542 /* VeepeeWeatherApp.swift in Sources */,
 				2A40D54728396F3400F7D542 /* Color+Name.swift in Sources */,
@@ -668,6 +684,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"VeepeeWeather/Assets/Preview Content\"";
@@ -698,6 +715,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"VeepeeWeather/Assets/Preview Content\"";
@@ -790,6 +808,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2A40D549283979F600F7D542 /* CoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2A40D54A283979F600F7D542 /* CoreDataModel.xcdatamodel */,
+			);
+			currentVersion = 2A40D54A283979F600F7D542 /* CoreDataModel.xcdatamodel */;
+			path = CoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2A40D4D22838498200F7D542 /* Project object */;
 }
