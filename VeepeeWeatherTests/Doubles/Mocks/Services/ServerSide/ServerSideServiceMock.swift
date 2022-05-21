@@ -11,6 +11,7 @@ import Foundation
 final class ServerSideServiceMock: ServerSideProtocol {
 
   let urlRequestFake = URLRequest(url: URL(string: "https://fake.api.request.com")!)
+  var onPerformAsyncAwait: () throws -> Void = {}
 
   let urlSessionMock: URLSessionProtocol
 
@@ -18,7 +19,8 @@ final class ServerSideServiceMock: ServerSideProtocol {
     urlSessionMock = urlSession
   }
 
-   func getParisFiveDaysForecast() async throws -> ForecastData {
+  func getParisForecast() async throws -> ForecastData {
+    try onPerformAsyncAwait()
     _ = try await urlSessionMock.data(for: urlRequestFake, delegate: .none)
     return .fake()
   }

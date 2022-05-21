@@ -34,7 +34,7 @@ extension CityData {
   /// Fake data for unit tests.
   static func fake(
     id: Int = 2643743,
-    name: String = "London",
+    name: String = "Paris",
     coord: CoordData = .fake(),
     country: String = "GB",
     population: Int = 1000000,
@@ -60,8 +60,8 @@ extension CityData {
 extension CoordData {
   /// Fake data for unit tests.
   static func fake(
-    lat: Double = 51.5073,
-    lon: Double = -0.1277
+    lat: Double = 48.8647,
+    lon: Double = 2.349
   ) -> CoordData {
 
     return CoordData(

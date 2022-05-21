@@ -11,7 +11,7 @@ import Foundation
 /// Data fetched from the https://openweathermap.org/forecast5 website.
 ///
 /// It represents five days / tree hours of forecast.
-struct ForecastData: Codable {
+struct ForecastData: Codable, Equatable {
     let cod: String
     let message, cnt: Int
     let list: [ListData]
@@ -19,7 +19,7 @@ struct ForecastData: Codable {
 }
 
 // MARK: - CityData
-struct CityData: Codable {
+struct CityData: Codable, Equatable {
     let id: Int
     let name: String
     let coord: CoordData
@@ -28,12 +28,12 @@ struct CityData: Codable {
 }
 
 // MARK: - CoordData
-struct CoordData: Codable {
+struct CoordData: Codable, Equatable {
     let lat, lon: Double
 }
 
 // MARK: - ListData
-struct ListData: Codable {
+struct ListData: Codable, Equatable {
     let dt: Int
     let main: MainClassData
     let weather: [WeatherData]
@@ -53,12 +53,12 @@ struct ListData: Codable {
 }
 
 // MARK: - CloudsData
-struct CloudsData: Codable {
+struct CloudsData: Codable, Equatable {
     let all: Int
 }
 
 // MARK: - MainClassData
-struct MainClassData: Codable {
+struct MainClassData: Codable, Equatable {
     let temp, feelsLike, tempMin, tempMax: Double
     let pressure, seaLevel, grndLevel, humidity: Int
     let tempKf: Double
@@ -77,7 +77,7 @@ struct MainClassData: Codable {
 }
 
 // MARK: - RainData
-struct RainData: Codable {
+struct RainData: Codable, Equatable {
     let the3H: Double
 
     enum CodingKeys: String, CodingKey {
@@ -86,7 +86,7 @@ struct RainData: Codable {
 }
 
 // MARK: - SysData
-struct SysData: Codable {
+struct SysData: Codable, Equatable {
     let pod: Pod
 }
 
@@ -96,7 +96,7 @@ enum Pod: String, Codable {
 }
 
 // MARK: - WeatherData
-struct WeatherData: Codable {
+struct WeatherData: Codable, Equatable {
     let id: Int
     let main: MainEnum
     let weatherDescription, icon: String
@@ -108,14 +108,14 @@ struct WeatherData: Codable {
     }
 }
 
-enum MainEnum: String, Codable {
+enum MainEnum: String, Codable, Equatable {
     case clear = "Clear"
     case clouds = "Clouds"
     case rain = "Rain"
 }
 
 // MARK: - WindData
-struct WindData: Codable {
+struct WindData: Codable, Equatable {
     let speed: Double
     let deg: Int
     let gust: Double

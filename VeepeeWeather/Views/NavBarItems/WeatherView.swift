@@ -10,8 +10,11 @@ import SwiftUI
 /// Populates the Paris forecast on iOS and iPadOS.
 struct WeatherView: View {
 
+  @StateObject var vm = WeatherViewModel()
+
   var body: some View {
     Text("WeatherView")
+      .task { await vm.getParisForecast() }
   }
 }
 

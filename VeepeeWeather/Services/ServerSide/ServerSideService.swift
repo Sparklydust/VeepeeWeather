@@ -27,11 +27,10 @@ final class ServerSideService: ServerSideProtocol {
 // MARK: - Five Days Forecast
 extension ServerSideService {
 
-  func getParisFiveDaysForecast() async throws -> ForecastData {
-
+  func getParisForecast() async throws -> ForecastData {
     let urlRequest = URLRequest(
       url: URL(
-        string: "api.openweathermap.org/data/2.5/forecast?lat=48.856614&lon=2.3522219&units=metric&appid=\(String(describing: apiKey))")!
+        string: "http://api.openweathermap.org/data/2.5/forecast?lat=48.856614&lon=2.3522219&units=metric&appid=\(apiKey!)")!
     )
     return try await serverSideCall(for: ForecastData.self, on: urlRequest)
   }
@@ -51,7 +50,7 @@ extension ServerSideService {
     on urlRequest: URLRequest
   ) async throws -> T {
 
-    let (data, response) = try await urlSession.data(for: urlRequest, delegate: .none)
+    let (data, response) = try await URLSession.shared.data(for: urlRequest)
     let validatedData = try validate(data, response)
     let request = try JSONDecoder().decode(T.self, from: validatedData)
 

@@ -19,5 +19,5 @@ protocol ServerSideProtocol {
 
   /// Fetch five days of the Paris weather.
   /// - Returns: Data with the forecast of the Paris city.
-  func getParisFiveDaysForecast() async throws -> ForecastData
+  func getParisForecast() async throws -> ForecastData
 }
