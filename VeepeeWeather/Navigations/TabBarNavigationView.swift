@@ -10,9 +10,15 @@ import SwiftUI
 /// iOS classic tab bar definition with
 /// all main tab views.
 struct TabBarNavigationView: View {
+
+  @State private var selectedTabBar: NavigationItem = .weather
   
   var body: some View {
-    Text("VeepeeWeather on iPhone!")
+    TabView(selection: $selectedTabBar) {
+      WeatherView()
+        .tabItem { Label("Weather", systemImage: "thermometer.sun.fill") }
+        .tag("weather")
+    }
   }
 }
 
