@@ -66,6 +66,13 @@
             ReferencedContainer = "container:VeepeeWeather.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "open_weather_api_key"
+            value = "f0ee7c259717551a1ad4637b7f58946e"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
