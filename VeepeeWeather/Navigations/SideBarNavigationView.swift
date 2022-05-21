@@ -13,8 +13,27 @@ import SwiftUI
 /// when multiple windows is used.
 struct SideBarNavigationView: View {
 
+  /// Key saving Scene chosen by the user when using the
+  /// application on iPad or macOS.
+  @SceneStorage("selected_scene")
+  var sideBarSelection: String?
+
   var body: some View {
-    Text("Veepee on iPad!")
+    NavigationView {
+      sidebar
+
+      WeatherView()
+    }
+  }
+
+  // MARK: - Sidebar
+  var sidebar: some View {
+    List(selection: $sideBarSelection) {
+      NavigationLink(destination: WeatherView()) {
+        Label("Weather", systemImage: "thermometer.sun.fill")
+      }
+      .tag("weather")
+    }
   }
 }
 
