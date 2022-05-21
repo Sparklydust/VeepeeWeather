@@ -13,8 +13,12 @@ struct WeatherView: View {
   @StateObject var vm = WeatherViewModel()
 
   var body: some View {
-    Text("WeatherView")
-      .task { await vm.getParisForecast() }
+    ZStack {
+      Text("WeatherView")
+
+      MainProgressView(isAnimating: vm.isLoading)
+    }
+    .task { await vm.getParisForecast() }
   }
 }
 
@@ -24,11 +28,22 @@ struct WeatherView_Previews: PreviewProvider {
   static var previews: some View {
     Group {
       WeatherView()
+        .previewDevice(
+          PreviewDevice(rawValue: iPhone))
 
       WeatherView()
         .preferredColorScheme(.dark)
+        .previewDevice(
+          PreviewDevice(rawValue: iPad))
+
+      WeatherView()
+        .previewDevice(
+          PreviewDevice(rawValue: iPad))
+
+      WeatherView()
+        .preferredColorScheme(.dark)
+        .previewDevice(
+          PreviewDevice(rawValue: iPad))
     }
-    .previewDevice(
-      PreviewDevice(rawValue: iPad))
   }
 }
