@@ -38,21 +38,21 @@ class WeatherViewModelTests: XCTestCase {
 
 // MARK: - ServerSideService
 extension WeatherViewModelTests {
-  func testServideSideService_successfulAPICallIsMadeToFetchFiveDaysForecastInParis_forecastValueHasForecastDataFromAPI() async throws {
-    let expected: ForecastData = .fake()
+  @MainActor func testServideSideService_successfulAPICallIsMadeToFetchFiveDaysForecastInParis_cityLocalNameIsEqualToParis() async throws {
+    let expected = ForecastData.fake().city.name
     let data = try json(fake: .forecastData)
     let response = status(code: 200)
     let urlSessionMock = URLSessionMock(data: data, response: response)
     sut.serverSideService = ServerSideServiceMock(urlSession: urlSessionMock)
-    sut.forecast = .none
+    sut.cityLocal.name = String()
 
     await sut.getParisForecast()
-    let result = sut.forecast
+    let result = sut.cityLocal.name
 
-    XCTAssertEqual(result, expected, "The data fetched from api must be set in the `forecast` publisher as the city of \(expected.city.name)")
+    XCTAssertEqual(result, expected, "The data fetched from api must set the `cityLocal` object city name to `\(expected)`")
   }
 
-  func testServideSideService_failedAPICallIsMadeToFetchFiveDaysForecastInParis_weatherAlertValueIsEqualToWeatherAlertServerSideError() async {
+  @MainActor func testServideSideService_failedAPICallIsMadeToFetchFiveDaysForecastInParis_weatherAlertValueIsEqualToWeatherAlertServerSideError() async {
     let expected: WeatherAlert = .serverSideError
     let urlSessionMock = URLSessionMock(error: .internalServerError)
     sut.serverSideService = ServerSideServiceMock(urlSession: urlSessionMock)
@@ -64,7 +64,7 @@ extension WeatherViewModelTests {
     XCTAssertEqual(result, expected, "weatherAlert must be `\(expected)` when api call fails")
   }
 
-  func testServideSideService_parisForecastIsBeingFetchedFromAPI_isLoadingIsTrueAndActivityControllerIsSpinning() async {
+  @MainActor func testServideSideService_parisForecastIsBeingFetchedFromAPI_isLoadingIsTrueAndActivityControllerIsSpinning() async {
     sut.isLoading = false
 
     serverSideServiceMock.onPerformAsyncAwait = {
@@ -75,7 +75,7 @@ extension WeatherViewModelTests {
     await sut.getParisForecast()
   }
 
-  func testServideSideService_parisForecastWasFetchedFromAPI_isLoadingIsFalseAndActivityControllerStopSpinning() async {
+  @MainActor func testServideSideService_parisForecastWasFetchedFromAPI_isLoadingIsFalseAndActivityControllerStopSpinning() async {
     let urlSessionMock = URLSessionMock()
     sut.serverSideService = ServerSideServiceMock(urlSession: urlSessionMock)
 

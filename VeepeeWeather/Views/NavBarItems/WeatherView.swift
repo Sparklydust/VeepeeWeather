@@ -14,7 +14,8 @@ struct WeatherView: View {
 
   var body: some View {
     ZStack {
-      Text("WeatherView")
+      Text(vm.cityLocal.name)
+        .animation(nil)
 
       MainProgressView(isAnimating: vm.isLoading)
     }

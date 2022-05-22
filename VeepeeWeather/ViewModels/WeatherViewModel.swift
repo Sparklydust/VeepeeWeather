@@ -10,8 +10,8 @@ import SwiftUI
 /// Handle all the logic needed for the ``WeatherView``.
 final class WeatherViewModel: ObservableObject {
 
-  // Data
-  @Published var forecast: ForecastData?
+  // Local
+  @ObservedObject var cityLocal = CityLocal()
 
   // Services
   var coreDataService: CoreDataService
@@ -44,7 +44,25 @@ extension WeatherViewModel {
   @MainActor func getParisForecast() async {
     showProgressView(true)
     defer { showProgressView(false) }
-    do { forecast = try await serverSideService.getParisForecast() }
-    catch { weatherAlert = .serverSideError }
+
+    do {
+      let data = try await serverSideService.getParisForecast()
+      cityLocal.update(with: data)
+      coreDataService.save(city: data)
+    } catch {
+      getSavedForecast()
+      weatherAlert = .serverSideError
+    }
+  }
+}
+
+// MARK: - CoreData
+extension WeatherViewModel {
+
+  /// Fetch saved city and its associated forecast from ``CoreDataModel``.
+  private func getSavedForecast() {
+    guard let cityEntity = coreDataService.fetchCities().first
+    else { return }
+    cityLocal.update(with: cityEntity)
   }
 }

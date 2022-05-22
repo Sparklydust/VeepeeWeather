@@ -37,6 +37,7 @@
 		2A40D54728396F3400F7D542 /* Color+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40D54628396F3400F7D542 /* Color+Name.swift */; };
 		2A40D54B283979F600F7D542 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A40D549283979F600F7D542 /* CoreDataModel.xcdatamodeld */; };
 		2A40D54D28397A1000F7D542 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40D54C28397A1000F7D542 /* CoreDataService.swift */; };
+		2A40D5542839A54600F7D542 /* CityLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40D5532839A54600F7D542 /* CityLocal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		2A40D54628396F3400F7D542 /* Color+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Name.swift"; sourceTree = "<group>"; };
 		2A40D54A283979F600F7D542 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		2A40D54C28397A1000F7D542 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		2A40D5532839A54600F7D542 /* CityLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityLocal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,7 +264,8 @@
 		2A40D518283871BA00F7D542 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2A40D5192838720B00F7D542 /* ForecastData.swift */,
+				2A40D5512839A4F100F7D542 /* Data */,
+				2A40D5522839A4FC00F7D542 /* Local */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -416,6 +419,22 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		2A40D5512839A4F100F7D542 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				2A40D5192838720B00F7D542 /* ForecastData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		2A40D5522839A4FC00F7D542 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				2A40D5532839A54600F7D542 /* CityLocal.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -519,6 +538,7 @@
 			files = (
 				2A40D51728386FBC00F7D542 /* URLSessionProtocol.swift in Sources */,
 				2A40D5252838789100F7D542 /* ServerSideProtocol.swift in Sources */,
+				2A40D5542839A54600F7D542 /* CityLocal.swift in Sources */,
 				2A40D5052838560C00F7D542 /* NavigationItem.swift in Sources */,
 				2A40D51A2838720B00F7D542 /* ForecastData.swift in Sources */,
 				2A40D4FC28384FE700F7D542 /* VeepeeWeatherAppTests.swift in Sources */,
