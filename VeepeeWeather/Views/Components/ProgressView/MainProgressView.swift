@@ -44,7 +44,7 @@ struct MainProgressView_Previews: PreviewProvider {
       MainProgressView(isAnimating: false)
         .preferredColorScheme(.dark)
         .previewDevice(
-          PreviewDevice(rawValue: iPad))
+          PreviewDevice(rawValue: iPhone))
 
       MainProgressView(isAnimating: false)
         .previewDevice(

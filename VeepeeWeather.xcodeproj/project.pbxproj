@@ -38,6 +38,8 @@
 		2A40D54B283979F600F7D542 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A40D549283979F600F7D542 /* CoreDataModel.xcdatamodeld */; };
 		2A40D54D28397A1000F7D542 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40D54C28397A1000F7D542 /* CoreDataService.swift */; };
 		2A40D5542839A54600F7D542 /* CityLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40D5532839A54600F7D542 /* CityLocal.swift */; };
+		2AE14CAF283A92110041BA5E /* WeatherLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE14CAE283A92110041BA5E /* WeatherLocal.swift */; };
+		2AE14CB1283A96190041BA5E /* Date+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE14CB0283A96190041BA5E /* Date+Format.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,8 @@
 		2A40D54A283979F600F7D542 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		2A40D54C28397A1000F7D542 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		2A40D5532839A54600F7D542 /* CityLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityLocal.swift; sourceTree = "<group>"; };
+		2AE14CAE283A92110041BA5E /* WeatherLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLocal.swift; sourceTree = "<group>"; };
+		2AE14CB0283A96190041BA5E /* Date+Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Format.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -406,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				2A40D54628396F3400F7D542 /* Color+Name.swift */,
+				2AE14CB0283A96190041BA5E /* Date+Format.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -431,6 +436,7 @@
 			isa = PBXGroup;
 			children = (
 				2A40D5532839A54600F7D542 /* CityLocal.swift */,
+				2AE14CAE283A92110041BA5E /* WeatherLocal.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -542,6 +548,8 @@
 				2A40D5052838560C00F7D542 /* NavigationItem.swift in Sources */,
 				2A40D51A2838720B00F7D542 /* ForecastData.swift in Sources */,
 				2A40D4FC28384FE700F7D542 /* VeepeeWeatherAppTests.swift in Sources */,
+				2AE14CB1283A96190041BA5E /* Date+Format.swift in Sources */,
+				2AE14CAF283A92110041BA5E /* WeatherLocal.swift in Sources */,
 				2A40D4FE283850CE00F7D542 /* VeepeeWeatherMain.swift in Sources */,
 				2A40D4E02838498200F7D542 /* ContentView.swift in Sources */,
 				2A40D54D28397A1000F7D542 /* CoreDataService.swift in Sources */,

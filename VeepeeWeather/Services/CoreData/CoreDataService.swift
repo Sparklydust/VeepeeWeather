@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import SwiftUI
 
 /// Responsible for operating CoreData actions between its
 /// persistent store and the Weather ServerSide.
@@ -21,6 +22,12 @@ final class CoreDataService: ObservableObject {
 
   let persistentContainer: NSPersistentContainer
 
+  @FetchRequest(
+    entity: CityEntity.entity(),
+    sortDescriptors: [],
+    predicate: .none
+  ) var cities: FetchedResults<CityEntity>
+
   /// Setup CoreData persistent store to save data on disk.
   /// - Parameter inMemory: Set to false for the app to use the
   /// persisted storage for production or the `inMemory` for unit tests.
@@ -32,7 +39,10 @@ final class CoreDataService: ObservableObject {
 
     // Force unwrapping to make sure path on disk is setup properly.
     if inMemory {
-      persistentContainer.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
+      persistentContainer
+        .persistentStoreDescriptions
+        .first!
+        .url = URL(fileURLWithPath: "/dev/null")
     }
 
     persistentContainer.loadPersistentStores { _, error in
@@ -54,12 +64,12 @@ extension CoreDataService {
       update(cities.first!, with: data)
       return
     }
-
     let cityEntity = CityEntity(
-      context: persistentContainer.viewContext)
-
-    cityEntity.id = Int32(data.city.id)
+      context: persistentContainer.viewContext
+    )
     cityEntity.name = data.city.name
+
+    // TODO: Add WeatherEntity children to the CityEntity
 
     saveInCoreData()
   }
@@ -86,6 +96,9 @@ extension CoreDataService {
     with data: ForecastData
   ) {
     persistentContainer.viewContext.performAndWait {
+
+      // TODO: Clear and update WeatherEntity children
+      // of the CityEntity
 
       saveInCoreData()
     }

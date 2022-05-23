@@ -30,7 +30,7 @@ extension ServerSideService {
   func getParisForecast() async throws -> ForecastData {
     let urlRequest = URLRequest(
       url: URL(
-        string: "http://api.openweathermap.org/data/2.5/forecast?lat=48.856614&lon=2.3522219&units=metric&appid=\(apiKey!)")!
+        string: "http://api.openweathermap.org/data/2.5/forecast?lat=48.85341&lon=2.3488&units=metric&appid=\(apiKey!)")!
     )
     return try await serverSideCall(for: ForecastData.self, on: urlRequest)
   }

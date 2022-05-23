@@ -14,8 +14,12 @@ struct WeatherView: View {
 
   var body: some View {
     ZStack {
-      Text(vm.cityLocal.name)
-        .animation(nil)
+      VStack {
+        Text(vm.cityLocal.name)
+          .animation(.none)
+          .animation(.easeInOut, value: vm.cityLocal.name)
+
+      }
 
       MainProgressView(isAnimating: vm.isLoading)
     }
@@ -35,7 +39,7 @@ struct WeatherView_Previews: PreviewProvider {
       WeatherView()
         .preferredColorScheme(.dark)
         .previewDevice(
-          PreviewDevice(rawValue: iPad))
+          PreviewDevice(rawValue: iPhone))
 
       WeatherView()
         .previewDevice(
