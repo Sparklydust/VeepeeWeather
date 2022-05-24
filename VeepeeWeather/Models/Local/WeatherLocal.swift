@@ -8,8 +8,9 @@
 import Foundation
 
 /// The city weater value of a day.
-struct WeatherLocal {
-
+struct WeatherLocal: Identifiable {
+  
+  var id: UUID
   var type: MainEnum
   var date: Date
   var temp: Double

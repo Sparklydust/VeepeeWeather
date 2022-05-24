@@ -23,9 +23,11 @@ extension CityLocal {
   /// Update the ``CityLocal`` published values to be
   /// populate on the device.
   /// - Parameter cityEntity: The city save in the ``CoreDataModel``.
-  @MainActor func update(with cityEntity: FetchedResults<CityEntity>) {
-    guard cityEntity[.zero].name != nil else { return }
-    name = cityEntity[.zero].name ?? String()
+  @MainActor func update(with cityEntity: CityEntity) {
+
+    name = cityEntity.name ?? "No Data"
+
+    // TODO: Update CityLocal with the CityEntity.
   }
 
   /// Update the ``CityLocal`` published values to be
@@ -37,6 +39,7 @@ extension CityLocal {
 
     weathers.removeAll()
     for forecast in forecastData.list {
+      guard weathers.count < 5 else { return }
       let date = DateFormatter.createDate(with: forecast.dtTxt)
       keepOneDailyForecast(on: date)
       saveWeather(from: forecast, on: date)
@@ -63,6 +66,7 @@ extension CityLocal {
     on date: Date
   ) {
     let weatherLocal = WeatherLocal(
+      id: UUID(),
       type: forecast.weather[.zero].main,
       date: date,
       temp: forecast.main.temp,

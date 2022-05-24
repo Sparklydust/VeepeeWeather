@@ -14,12 +14,36 @@ struct WeatherView: View {
 
   var body: some View {
     ZStack {
-      VStack {
-        Text(vm.cityLocal.name)
-          .animation(.none)
-          .animation(.easeInOut, value: vm.cityLocal.name)
+      VStack(spacing: 40) {
+        WeatherTitle(vm: vm)
 
+        LazyVGrid(
+          columns: [
+            GridItem(),
+            GridItem()
+          ],
+          alignment: .center,
+          spacing: 24
+        ) {
+          ForEach(vm.cityLocal.weathers, id: \.id) { weather in
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+              .stroke(Color.accentColor, lineWidth: 2)
+              .frame(
+                minWidth: 50, idealWidth: 150, maxWidth: 250,
+                minHeight: 30, idealHeight: 100, maxHeight: 150
+              )
+              .overlay {
+                Text(weather.type.rawValue)
+                  .foregroundColor(.black)
+                  .padding(4)
+              }
+              .padding()
+          }
+        }
+        .padding()
+        Spacer()
       }
+      .padding(.top, 40)
 
       MainProgressView(isAnimating: vm.isLoading)
     }

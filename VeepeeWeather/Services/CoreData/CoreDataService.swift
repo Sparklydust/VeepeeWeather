@@ -22,12 +22,6 @@ final class CoreDataService: ObservableObject {
 
   let persistentContainer: NSPersistentContainer
 
-  @FetchRequest(
-    entity: CityEntity.entity(),
-    sortDescriptors: [],
-    predicate: .none
-  ) var cities: FetchedResults<CityEntity>
-
   /// Setup CoreData persistent store to save data on disk.
   /// - Parameter inMemory: Set to false for the app to use the
   /// persisted storage for production or the `inMemory` for unit tests.
