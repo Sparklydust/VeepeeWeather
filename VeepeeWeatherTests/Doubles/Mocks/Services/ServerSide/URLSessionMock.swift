@@ -40,4 +40,3 @@ final class URLSessionMock: URLSessionProtocol {
     return (data, response)
   }
 }
-

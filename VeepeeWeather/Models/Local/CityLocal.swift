@@ -32,7 +32,7 @@ extension CityLocal {
 
   /// Update the ``CityLocal`` published values to be
   /// populate on the device.
-  /// - Parameter forecastData: The city forecase fetched from
+  /// - Parameter forecastData: The city forecast fetched from
   /// api call that would define the ``CityLocal``.
   @MainActor func update(with forecastData: ForecastData) async {
     name = forecastData.city.name

@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// The city weater value of a day.
+/// The city weather value of a day.
 struct WeatherLocal: Identifiable {
   
   var id: UUID

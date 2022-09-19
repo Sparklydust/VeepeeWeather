@@ -66,4 +66,3 @@ extension WeatherViewModel {
     cityLocal.update(with: cityEntity)
   }
 }
-

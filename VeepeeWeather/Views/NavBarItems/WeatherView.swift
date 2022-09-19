@@ -18,26 +18,12 @@ struct WeatherView: View {
         WeatherTitle(vm: vm)
 
         LazyVGrid(
-          columns: [
-            GridItem(),
-            GridItem()
-          ],
+          columns: [GridItem(), GridItem()],
           alignment: .center,
           spacing: 24
         ) {
           ForEach(vm.cityLocal.weathers, id: \.id) { weather in
-            RoundedRectangle(cornerRadius: 16, style: .continuous)
-              .stroke(Color.accentColor, lineWidth: 2)
-              .frame(
-                minWidth: 50, idealWidth: 150, maxWidth: 250,
-                minHeight: 30, idealHeight: 100, maxHeight: 150
-              )
-              .overlay {
-                Text(weather.type.rawValue)
-                  .foregroundColor(.black)
-                  .padding(4)
-              }
-              .padding()
+            WeatherCell(weather: weather)
           }
         }
         .padding()
