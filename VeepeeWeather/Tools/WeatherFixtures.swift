@@ -11,7 +11,7 @@ import Foundation
 extension WeatherLocal {
 
   /// Fake data for SwiftUI previews.
-  static func fixtures(
+  static func fixture(
     id: UUID = UUID(),
     type: MainEnum = .clear,
     date: Date = Date(),
