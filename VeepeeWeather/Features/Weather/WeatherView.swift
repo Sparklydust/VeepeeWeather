@@ -13,9 +13,8 @@ struct WeatherView: View {
   @StateObject var vm = WeatherViewModel()
 
   var body: some View {
-    ZStack {
-      VStack(spacing: 40) {
-        WeatherTitle(vm: vm)
+    NavigationView {
+      ScrollView {
 
         LazyVGrid(
           columns: [GridItem(), GridItem()],
@@ -23,12 +22,17 @@ struct WeatherView: View {
           spacing: 24
         ) {
           ForEach(vm.cityLocal.weathers, id: \.id) { weather in
-            WeatherCell(weather: weather)
+
+            NavigationLink {
+              WeatherDetailsView()
+            } label: {
+              WeatherCell(weather: weather)
+            }
           }
         }
-        .padding()
-        Spacer()
       }
+      .navigationTitle(Text(vm.cityLocal.name))
+      .navigationBarTitleDisplayMode(.large)
       .padding(.top, 40)
 
       MainProgressView(isAnimating: vm.isLoading)
@@ -47,16 +51,6 @@ struct WeatherView_Previews: PreviewProvider {
           PreviewDevice(rawValue: iPhone))
 
       WeatherView()
-        .preferredColorScheme(.dark)
-        .previewDevice(
-          PreviewDevice(rawValue: iPhone))
-
-      WeatherView()
-        .previewDevice(
-          PreviewDevice(rawValue: iPad))
-
-      WeatherView()
-        .preferredColorScheme(.dark)
         .previewDevice(
           PreviewDevice(rawValue: iPad))
     }

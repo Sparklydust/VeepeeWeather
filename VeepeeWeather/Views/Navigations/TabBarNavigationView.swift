@@ -26,13 +26,8 @@ struct TabBarNavigationView: View {
 struct TabBarNavigationView_Previews: PreviewProvider {
 
   static var previews: some View {
-    Group {
-      TabBarNavigationView()
-
-      TabBarNavigationView()
-        .preferredColorScheme(.dark)
-    }
-    .previewDevice(
-      PreviewDevice(rawValue: iPhone))
+    TabBarNavigationView()
+      .previewDevice(
+        PreviewDevice(rawValue: iPhone))
   }
 }

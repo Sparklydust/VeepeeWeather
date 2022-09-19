@@ -32,6 +32,7 @@ struct SmallTemperatureView: View {
         Text(String(format: "%.0f", temperature))
           .font(.footnote)
           .fontWeight(.medium)
+          .foregroundColor(.primary)
       }
       .padding(.bottom, -4)
       .padding(.trailing, -32)

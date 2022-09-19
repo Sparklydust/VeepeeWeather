@@ -41,13 +41,8 @@ struct SideBarNavigationView: View {
 struct SideBarNavigationView_Previews: PreviewProvider {
 
   static var previews: some View {
-    Group {
-      SideBarNavigationView()
-
-      SideBarNavigationView()
-        .preferredColorScheme(.dark)
-    }
-    .previewDevice(
-      PreviewDevice(rawValue: iPad))
+    SideBarNavigationView()
+      .previewDevice(
+        PreviewDevice(rawValue: iPad))
   }
 }
