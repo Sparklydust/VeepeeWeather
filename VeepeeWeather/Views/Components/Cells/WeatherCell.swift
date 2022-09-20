@@ -11,26 +11,17 @@ import SwiftUI
 struct WeatherCell: View {
 
   var weather: WeatherLocal
-
-  private var image: (name: String, color: Color) {
-    switch weather.type {
-    case .clear:
-      return ("sun.min.fill", .yellow)
-    case .clouds:
-      return ("cloud.fill", .gray)
-    case .rain:
-      return ("cloud.heavyrain.fill", .secondary)
-    }
-  }
+  var namespace: Namespace.ID
 
   var body: some View {
     RoundedRectangle(cornerRadius: 16, style: .continuous)
       .stroke(Color.accentColor, lineWidth: 1.5)
+      .overlay { content }
+      .matchedGeometryEffect(id: weather.id, in: namespace)
       .frame(
         minWidth: 50, idealWidth: 150, maxWidth: 250,
         minHeight: 30, idealHeight: 100, maxHeight: 150
       )
-      .overlay { content }
       .padding()
   }
 
@@ -41,10 +32,10 @@ struct WeatherCell: View {
         Color.clear
 
         VStack {
-          Image(systemName: image.name)
+          Image(systemName: weather.image.name)
             .resizable()
             .aspectRatio(1, contentMode: .fit)
-            .foregroundColor(image.color)
+            .foregroundColor(weather.image.color)
             .frame(minHeight: 16, idealHeight: 32, maxHeight: 48)
 
           Spacer()
@@ -77,8 +68,10 @@ struct WeatherCell: View {
 // MARK: - Previews
 struct WeatherCell_Previews: PreviewProvider {
 
+  @Namespace static var namespace
+
   static var previews: some View {
-    WeatherCell(weather: .fixture())
+    WeatherCell(weather: .fixture(), namespace: namespace)
       .padding()
       .previewLayout(.sizeThatFits)
   }

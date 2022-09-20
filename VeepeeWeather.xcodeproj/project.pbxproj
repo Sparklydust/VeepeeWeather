@@ -44,6 +44,7 @@
 		2A735DE228D92ADA002EAFA9 /* WeatherDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A735DE128D92ADA002EAFA9 /* WeatherDetailsView.swift */; };
 		2AE14CAF283A92110041BA5E /* WeatherLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE14CAE283A92110041BA5E /* WeatherLocal.swift */; };
 		2AE14CB1283A96190041BA5E /* Date+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE14CB0283A96190041BA5E /* Date+Format.swift */; };
+		2AF1B75828DA7CCC00935731 /* MediumTemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF1B75728DA7CCC00935731 /* MediumTemperatureView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		2A735DE128D92ADA002EAFA9 /* WeatherDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailsView.swift; sourceTree = "<group>"; };
 		2AE14CAE283A92110041BA5E /* WeatherLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLocal.swift; sourceTree = "<group>"; };
 		2AE14CB0283A96190041BA5E /* Date+Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Format.swift"; sourceTree = "<group>"; };
+		2AF1B75728DA7CCC00935731 /* MediumTemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumTemperatureView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -455,6 +457,7 @@
 		2A735DD828D90F2A002EAFA9 /* Temperatures */ = {
 			isa = PBXGroup;
 			children = (
+				2AF1B75728DA7CCC00935731 /* MediumTemperatureView.swift */,
 				2A735DDA28D90F4D002EAFA9 /* SmallTemperatureView.swift */,
 			);
 			path = Temperatures;
@@ -609,6 +612,7 @@
 				2A40D51F283876F200F7D542 /* WeatherViewModel.swift in Sources */,
 				2A40D53D2839103700F7D542 /* WeatherAlert.swift in Sources */,
 				2A40D54B283979F600F7D542 /* CoreDataModel.xcdatamodeld in Sources */,
+				2AF1B75828DA7CCC00935731 /* MediumTemperatureView.swift in Sources */,
 				2A40D50C2838572500F7D542 /* NavigationProtocol.swift in Sources */,
 				2A40D4DE2838498200F7D542 /* VeepeeWeatherApp.swift in Sources */,
 				2A40D54728396F3400F7D542 /* Color+Name.swift in Sources */,

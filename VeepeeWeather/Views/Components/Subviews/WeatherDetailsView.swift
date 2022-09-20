@@ -36,9 +36,35 @@ struct WeatherDetailsView: View {
     .matchedGeometryEffect(id: weather.id, in: namespace)
   }
 
-    var content: some View {
-        Text("WeatherDetailsView")
+  var content: some View {
+    VStack {
+      Text(weather.date.formatted(date: .complete, time: .omitted))
+        .font(.title3)
+        .padding(15)
+
+      HStack(alignment: .top) {
+        Image(systemName: weather.image.name)
+          .resizable()
+          .aspectRatio(1, contentMode: .fit)
+          .foregroundColor(weather.image.color)
+          .frame(minHeight: 40, idealHeight: 60, maxHeight: 80)
+          .padding(16)
+
+        Text(weather.info)
+          .font(.body)
+          .multilineTextAlignment(.leading)
+          .lineLimit(.zero)
+
+        Spacer()
+      }
+      Spacer()
+
+      MediumTemperatureView(weather: weather)
+
+      Spacer()
+      Spacer()
     }
+  }
 }
 
 // MARK: - Previews

@@ -35,8 +35,7 @@ struct WeatherView: View {
                   vm.showDetailsView(for: weather)
                 }
               }) {
-                WeatherCell(weather: weather)
-                  .matchedGeometryEffect(id: weather.id, in: namespace)
+                WeatherCell(weather: weather, namespace: namespace)
               }
             }
           }
