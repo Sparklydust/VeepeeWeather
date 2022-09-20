@@ -20,6 +20,7 @@ final class WeatherViewModel: ObservableObject {
   // UI Levers
   @Published var isLoading = false
   @Published var weatherAlert: WeatherAlert = .unknown
+  @Published var showDetails = false
 
   init(coreDataService: CoreDataService = CoreDataService(),
        serverSideService: ServerSideProtocol = ServerSideService()) {
@@ -28,8 +29,18 @@ final class WeatherViewModel: ObservableObject {
   }
 }
 
+// MARK: - Actions
+extension WeatherViewModel {
+
+  func showDetailsView(for weather: WeatherLocal) {
+    cityLocal.selectedWeather = weather
+    showDetails = true
+  }
+}
+
 // MARK: - CustomProgressView
 extension WeatherViewModel {
+
   /// Trigger or not the custom progress view from the isLoading publisher.
   /// - Parameter action: true or false to trigger the progress view.
   func showProgressView(_ action: Bool) {

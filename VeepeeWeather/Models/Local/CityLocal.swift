@@ -15,6 +15,7 @@ final actor CityLocal: ObservableObject {
 
   @Published @MainActor var name = String()
   @Published @MainActor var weathers = [WeatherLocal]()
+  @Published @MainActor var selectedWeather: WeatherLocal?
 }
 
 // MARK: - Update

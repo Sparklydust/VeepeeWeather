@@ -11,30 +11,40 @@ import SwiftUI
 struct WeatherView: View {
 
   @StateObject var vm = WeatherViewModel()
+  @Namespace var namespace
 
   var body: some View {
     NavigationView {
-      ScrollView {
-
-        LazyVGrid(
-          columns: [GridItem(), GridItem()],
-          alignment: .center,
-          spacing: 24
-        ) {
-          ForEach(vm.cityLocal.weathers, id: \.id) { weather in
-
-            NavigationLink {
-              WeatherDetailsView()
-            } label: {
-              WeatherCell(weather: weather)
+      if vm.showDetails {
+        
+        WeatherDetailsView(
+          weather: vm.cityLocal.selectedWeather!,
+          showDetails: $vm.showDetails,
+          namespace: namespace)
+      } else {
+        ScrollView {
+          
+          LazyVGrid(
+            columns: [GridItem(), GridItem()],
+            alignment: .center,
+            spacing: 24
+          ) {
+            ForEach(vm.cityLocal.weathers, id: \.id) { weather in
+              Button(action: {
+                withAnimation(.spring(response: 0.35, dampingFraction: 0.7)) {
+                  vm.showDetailsView(for: weather)
+                }
+              }) {
+                WeatherCell(weather: weather)
+                  .matchedGeometryEffect(id: weather.id, in: namespace)
+              }
             }
           }
         }
+        .navigationTitle(Text(vm.cityLocal.name))
+        .navigationBarTitleDisplayMode(.large)
+        .padding(.top, 40)
       }
-      .navigationTitle(Text(vm.cityLocal.name))
-      .navigationBarTitleDisplayMode(.large)
-      .padding(.top, 40)
-
       MainProgressView(isAnimating: vm.isLoading)
     }
     .task { await vm.getParisForecast() }

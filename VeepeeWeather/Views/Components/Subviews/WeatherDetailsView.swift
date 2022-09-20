@@ -11,20 +11,46 @@ import SwiftUI
 /// forecast for a same day. 
 struct WeatherDetailsView: View {
 
+  var weather: WeatherLocal
+
+  @Binding var showDetails: Bool
+  var namespace: Namespace.ID
+
   var body: some View {
-    Text("WeatherDetailsView")
+    ZStack(alignment: .topTrailing) {
+
+      RoundedRectangle(cornerRadius: 16, style: .continuous)
+        .stroke(Color.accentColor, lineWidth: 3)
+        .overlay { content }
+        .padding()
+
+      Button(action: {
+        withAnimation(.easeInOut) { showDetails = false }
+      }) {
+        Image(systemName: "x.circle.fill")
+          .font(.largeTitle)
+          .foregroundColor(.secondary)
+          .offset(x: -24, y: 24)
+      }
+    }
+    .matchedGeometryEffect(id: weather.id, in: namespace)
   }
+
+    var content: some View {
+        Text("WeatherDetailsView")
+    }
 }
 
+// MARK: - Previews
 struct WeatherDetailsView_Previews: PreviewProvider {
 
-  static var previews: some View {
-    Group {
-      WeatherDetailsView()
-        .previewDevice(PreviewDevice(rawValue: iPhone))
+  @Namespace static var namespace
 
-      WeatherDetailsView()
-        .previewDevice(PreviewDevice(rawValue: iPhone))
-    }
+  static var previews: some View {
+    WeatherDetailsView(
+      weather: .fixture(),
+      showDetails: .constant(false),
+      namespace: namespace)
+    .previewDevice(PreviewDevice(rawValue: iPhone))
   }
 }
