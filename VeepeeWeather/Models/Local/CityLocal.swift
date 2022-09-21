@@ -73,7 +73,7 @@ extension CityLocal {
       temp: forecast.main.temp,
       tempMin: forecast.main.tempMin,
       tempMax: forecast.main.tempMax,
-      info: forecast.weather[.zero].weatherDescription
+      info: forecast.weather[.zero].description
     )
     weathers.append(weatherLocal)
   }

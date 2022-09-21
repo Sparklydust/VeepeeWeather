@@ -14,6 +14,7 @@ extension WeatherLocal {
   static func fixture(
     id: UUID = UUID(),
     type: MainEnum = .clear,
+    icon: String = "www.fake-icon.com",
     date: Date = Date(),
     temp: Double = 35.4,
     tempMin: Double = 24,
@@ -24,6 +25,7 @@ extension WeatherLocal {
     return WeatherLocal(
       id: id,
       type: type,
+      icon: icon,
       date: date,
       temp: temp,
       tempMin: tempMin,

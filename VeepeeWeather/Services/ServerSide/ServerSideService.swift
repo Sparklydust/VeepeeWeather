@@ -9,13 +9,13 @@ import Foundation
 
 /// Server side service that is responsible to fetch data
 /// asynchronously from the https://openweathermap.org website.
-final class ServerSideService: ServerSideProtocol {
+final actor ServerSideService: ServerSideProtocol {
 
   var urlSession: URLSessionProtocol
 
   /// Private api key from the https://openweathermap.org/api.
   ///
-  /// - Info: Add your personal key in place of ``ProcessInfo``
+  /// - Warning: Add your personal key in place of ``ProcessInfo``
   /// to make the VeepeeWeather application works.
   let apiKey = ProcessInfo.processInfo.environment["open_weather_api_key"]
 
