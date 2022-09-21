@@ -32,10 +32,7 @@ struct WeatherCell: View {
         Color.clear
 
         VStack {
-          Image(systemName: weather.image.name)
-            .resizable()
-            .aspectRatio(1, contentMode: .fit)
-            .foregroundColor(weather.image.color)
+          AsyncImageView(imageURL: weather.icon)
             .frame(minHeight: 16, idealHeight: 32, maxHeight: 48)
 
           Spacer()

@@ -12,19 +12,10 @@ struct WeatherLocal: Identifiable {
   
   var id: UUID
   var type: MainEnum
+  var icon: String 
   var date: Date
   var temp: Double
   var tempMin: Double
   var tempMax: Double
   var info: String
-  var image: (name: String, color: Color) {
-    switch type {
-    case .clear:
-      return ("sun.min.fill", .yellow)
-    case .clouds:
-      return ("cloud.fill", .gray)
-    case .rain:
-      return ("cloud.heavyrain.fill", .secondary)
-    }
-  }
 }

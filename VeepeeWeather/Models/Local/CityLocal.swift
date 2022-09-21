@@ -69,6 +69,7 @@ extension CityLocal {
     let weatherLocal = WeatherLocal(
       id: UUID(),
       type: forecast.weather[.zero].main,
+      icon: forecast.weather[.zero].icon,
       date: date,
       temp: forecast.main.temp,
       tempMin: forecast.main.tempMin,

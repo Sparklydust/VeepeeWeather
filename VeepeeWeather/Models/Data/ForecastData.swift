@@ -26,7 +26,6 @@ struct CityData: Codable, Equatable {
 struct ListData: Codable, Equatable {
   let main: MainClassData
   let weather: [WeatherData]
-
   let dtTxt: String
 
   enum CodingKeys: String, CodingKey {

@@ -43,11 +43,8 @@ struct WeatherDetailsView: View {
         .padding(15)
 
       HStack(alignment: .top) {
-        Image(systemName: weather.image.name)
-          .resizable()
-          .aspectRatio(1, contentMode: .fit)
-          .foregroundColor(weather.image.color)
-          .frame(minHeight: 40, idealHeight: 60, maxHeight: 80)
+        AsyncImageView(imageURL: weather.icon)
+          .frame(minHeight: 80, idealHeight: 100, maxHeight: 120)
           .padding(16)
 
         Text(weather.info)
