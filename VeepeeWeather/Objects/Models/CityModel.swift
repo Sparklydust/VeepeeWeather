@@ -1,5 +1,5 @@
 //
-//  CityLocal.swift
+//  CityModel.swift
 //  VeepeeWeather
 //
 //  Created by Roland Lariotte on 22/05/2022.
@@ -11,30 +11,30 @@ import SwiftUI
 /// Local object representing the city that displays
 /// the forecast on the ``WeatherView``.
 /// - Info: Run on the ``MainActor``.
-final actor CityLocal: ObservableObject {
+final actor CityModel: ObservableObject {
 
   @Published @MainActor var name = String()
-  @Published @MainActor var weathers = [WeatherLocal]()
-  @Published @MainActor var selectedWeather: WeatherLocal?
+  @Published @MainActor var weathers = [WeatherModel]()
+  @Published @MainActor var selectedWeather: WeatherModel?
 }
 
 // MARK: - Update
-extension CityLocal {
+extension CityModel {
 
-  /// Update the ``CityLocal`` published values to be
+  /// Update the ``CityModel`` published values to be
   /// populate on the device.
   /// - Parameter cityEntity: The city save in the ``CoreDataModel``.
   @MainActor func update(with cityEntity: CityEntity) {
 
     name = cityEntity.name ?? "No Data"
 
-    // TODO: Update CityLocal with the CityEntity.
+    // TODO: Update CityModel with the CityEntity.
   }
 
-  /// Update the ``CityLocal`` published values to be
+  /// Update the ``CityModel`` published values to be
   /// populate on the device.
   /// - Parameter forecastData: The city forecast fetched from
-  /// api call that would define the ``CityLocal``.
+  /// api call that would define the ``CityModel``.
   @MainActor func update(with forecastData: ForecastData) async {
     name = forecastData.city.name
 
@@ -66,7 +66,7 @@ extension CityLocal {
     from forecast: ListData,
     on date: Date
   ) {
-    let weatherLocal = WeatherLocal(
+    let weatherModel = WeatherModel(
       id: UUID(),
       type: forecast.weather[.zero].main,
       icon: forecast.weather[.zero].icon,
@@ -76,6 +76,6 @@ extension CityLocal {
       tempMax: forecast.main.tempMax,
       info: forecast.weather[.zero].description
     )
-    weathers.append(weatherLocal)
+    weathers.append(weatherModel)
   }
 }

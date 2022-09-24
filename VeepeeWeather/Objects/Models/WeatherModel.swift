@@ -1,5 +1,5 @@
 //
-//  WeatherLocal.swift
+//  WeatherModel.swift
 //  VeepeeWeather
 //
 //  Created by Roland Lariotte on 22/05/2022.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// The city weather value of a day.
-struct WeatherLocal: Identifiable {
+struct WeatherModel: Identifiable {
   
   var id: UUID
   var type: MainEnum

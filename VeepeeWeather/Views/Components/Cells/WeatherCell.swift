@@ -10,7 +10,7 @@ import SwiftUI
 /// Cell with data of a one day forecast.
 struct WeatherCell: View {
 
-  var weather: WeatherLocal
+  var weather: WeatherModel
   var namespace: Namespace.ID
 
   var body: some View {

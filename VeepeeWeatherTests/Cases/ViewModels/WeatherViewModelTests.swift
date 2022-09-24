@@ -38,18 +38,18 @@ class WeatherViewModelTests: XCTestCase {
 
 // MARK: - ServerSideService
 extension WeatherViewModelTests {
-  @MainActor func testServideSideService_successfulAPICallIsMadeToFetchFiveDaysForecastInParis_cityLocalNameIsEqualToParis() async throws {
+  @MainActor func testServideSideService_successfulAPICallIsMadeToFetchFiveDaysForecastInParis_cityModelNameIsEqualToParis() async throws {
     let expected = ForecastData.fake().city.name
     let data = try json(fake: .forecastData)
     let response = status(code: 200)
     let urlSessionMock = URLSessionMock(data: data, response: response)
     sut.serverSideService = ServerSideServiceMock(urlSession: urlSessionMock)
-    sut.cityLocal.name = String()
+    sut.cityModel.name = String()
 
     await sut.getParisForecast()
-    let result = sut.cityLocal.name
+    let result = sut.cityModel.name
 
-    XCTAssertEqual(result, expected, "The data fetched from api must set the `cityLocal` object city name to `\(expected)`")
+    XCTAssertEqual(result, expected, "The data fetched from api must set the `cityModel` object city name to `\(expected)`")
   }
 
   @MainActor func testServideSideService_failedAPICallIsMadeToFetchFiveDaysForecastInParis_weatherAlertValueIsEqualToWeatherAlertServerSideError() async {

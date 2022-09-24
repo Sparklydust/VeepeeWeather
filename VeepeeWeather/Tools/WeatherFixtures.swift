@@ -7,8 +7,8 @@
 
 import Foundation
 
-// MARK: - WeatherLocal
-extension WeatherLocal {
+// MARK: - WeatherModel
+extension WeatherModel {
 
   /// Fake data for SwiftUI previews.
   static func fixture(
@@ -20,9 +20,9 @@ extension WeatherLocal {
     tempMin: Double = 24,
     tempMax: Double = 38.9,
     info: String = "Clear sky with a fresh breeze"
-  ) -> WeatherLocal {
+  ) -> WeatherModel {
 
-    return WeatherLocal(
+    return WeatherModel(
       id: id,
       type: type,
       icon: icon,

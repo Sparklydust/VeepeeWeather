@@ -18,7 +18,7 @@ struct WeatherView: View {
       if vm.showDetails {
         
         WeatherDetailsView(
-          weather: vm.cityLocal.selectedWeather!,
+          weather: vm.cityModel.selectedWeather!,
           showDetails: $vm.showDetails,
           namespace: namespace)
       } else {
@@ -29,7 +29,7 @@ struct WeatherView: View {
             alignment: .center,
             spacing: 24
           ) {
-            ForEach(vm.cityLocal.weathers, id: \.id) { weather in
+            ForEach(vm.cityModel.weathers, id: \.id) { weather in
               Button(action: {
                 withAnimation(.spring(response: 0.35, dampingFraction: 0.7)) {
                   vm.showDetailsView(for: weather)
@@ -40,7 +40,7 @@ struct WeatherView: View {
             }
           }
         }
-        .navigationTitle(Text(vm.cityLocal.name))
+        .navigationTitle(Text(vm.cityModel.name))
         .navigationBarTitleDisplayMode(.large)
         .padding(.top, 40)
       }

@@ -11,7 +11,7 @@ import SwiftUI
 /// forecast for a same day. 
 struct WeatherDetailsView: View {
 
-  var weather: WeatherLocal
+  var weather: WeatherModel
 
   @Binding var showDetails: Bool
   var namespace: Namespace.ID

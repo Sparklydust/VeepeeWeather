@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MediumTemperatureView: View {
 
-  var weather: WeatherLocal
+  var weather: WeatherModel
 
   var body: some View {
     HStack {

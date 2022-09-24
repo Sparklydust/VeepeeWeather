@@ -11,7 +11,7 @@ import SwiftUI
 final class WeatherViewModel: ObservableObject {
 
   // Local
-  @ObservedObject var cityLocal = CityLocal()
+  @ObservedObject var cityModel = CityModel()
 
   // Services
   var coreDataService: CoreDataService
@@ -32,8 +32,8 @@ final class WeatherViewModel: ObservableObject {
 // MARK: - Actions
 extension WeatherViewModel {
 
-  func showDetailsView(for weather: WeatherLocal) {
-    cityLocal.selectedWeather = weather
+  func showDetailsView(for weather: WeatherModel) {
+    cityModel.selectedWeather = weather
     showDetails = true
   }
 }
@@ -58,7 +58,7 @@ extension WeatherViewModel {
 
     do {
       let data = try await serverSideService.getParisForecast()
-      await cityLocal.update(with: data)
+      await cityModel.update(with: data)
       coreDataService.save(city: data)
     } catch {
       getSavedForecast()
@@ -74,6 +74,6 @@ extension WeatherViewModel {
   private func getSavedForecast() {
     guard let cityEntity = coreDataService.fetchCities().first
     else { return }
-    cityLocal.update(with: cityEntity)
+    cityModel.update(with: cityEntity)
   }
 }
