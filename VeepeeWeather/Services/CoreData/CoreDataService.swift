@@ -22,6 +22,10 @@ final class CoreDataService: ObservableObject {
 
   let persistentContainer: NSPersistentContainer
 
+  lazy var managedContext: NSManagedObjectContext = {
+    return self.persistentContainer.viewContext
+  }()
+
   /// Setup CoreData persistent store to save data on disk.
   /// - Parameter inMemory: Set to false for the app to use the
   /// persisted storage for production or the `inMemory` for unit tests.
@@ -58,25 +62,22 @@ extension CoreDataService {
       update(cities.first!, with: data)
       return
     }
-    let cityEntity = CityEntity(
-      context: persistentContainer.viewContext
-    )
+    let cityEntity = CityEntity(context: managedContext)
     cityEntity.name = data.city.name
 
     // TODO: Add WeatherEntity children to the CityEntity
 
-    saveInCoreData()
+    saveContext()
   }
 
   /// Fetching the ``CityEntity`` data saved in ``CoreDataModel``.
   /// - Returns: An array of ``CityEntity`` saved in ``CoreData``.
   func fetchCities() -> [CityEntity] {
     let fetchRequest: NSFetchRequest<CityEntity> = CityEntity.fetchRequest()
-    let context = persistentContainer.viewContext
 
-    do { return try context.fetch(fetchRequest) }
+    do { return try managedContext.fetch(fetchRequest) }
     catch {
-      rollbackChanges(on: error, in: context)
+      print(error.localizedDescription)
       return []
     }
   }
@@ -89,12 +90,12 @@ extension CoreDataService {
     _ cityEntity: CityEntity,
     with data: ForecastData
   ) {
-    persistentContainer.viewContext.performAndWait {
+    managedContext.performAndWait {
 
       // TODO: Clear and update WeatherEntity children
       // of the CityEntity
 
-      saveInCoreData()
+      saveContext()
     }
   }
 }
@@ -102,23 +103,9 @@ extension CoreDataService {
 // MARK: - Actions
 extension CoreDataService {
   /// Save context in the CoreData sqlite database.
-  private func saveInCoreData() {
-    let context = persistentContainer.viewContext
-    do {
-      try context.save()
-      context.reset()
-    }
-    catch { rollbackChanges(on: error, in: context) }
-  }
-
-  // Rollback is being made when context has changes to clear.
-  private func rollbackChanges(
-    on error: Error,
-    in context: NSManagedObjectContext
-  ) {
-    print(error.localizedDescription)
-    if context.hasChanges {
-      context.rollback()
-    }
+  private func saveContext() {
+    guard managedContext.hasChanges else { return }
+    do { try managedContext.save() }
+    catch { print(error.localizedDescription) }
   }
 }
