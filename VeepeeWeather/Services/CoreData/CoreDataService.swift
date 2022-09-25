@@ -20,7 +20,7 @@ final class CoreDataService: ObservableObject {
     return model
   }()
 
-  let persistentContainer: NSPersistentContainer
+  private let persistentContainer: NSPersistentContainer
 
   lazy var managedContext: NSManagedObjectContext = {
     return self.persistentContainer.viewContext
@@ -56,18 +56,13 @@ final class CoreDataService: ObservableObject {
 extension CoreDataService {
   /// Saving the forecast data in the persistent store to a ``CityEntity``.
   /// - Parameter data: Forecast data for the Paris city fetch from api.
-  func save(city data: ForecastData) {
+  func save(_ cityModel: CityModel) async {
     let cities = fetchCities()
     guard cities.isEmpty else {
-      update(cities.first!, with: data)
+      update(cities.first!, with: cityModel)
       return
     }
-    let cityEntity = CityEntity(context: managedContext)
-    cityEntity.name = data.city.name
-
-    // TODO: Add WeatherEntity children to the CityEntity
-
-    saveContext()
+    await saving(cityModel)
   }
 
   /// Fetching the ``CityEntity`` data saved in ``CoreDataModel``.
@@ -88,12 +83,10 @@ extension CoreDataService {
   ///   - data: The data form api call used to update the entity.
   func update(
     _ cityEntity: CityEntity,
-    with data: ForecastData
+    with cityModel: CityModel
   ) {
     managedContext.performAndWait {
 
-      // TODO: Clear and update WeatherEntity children
-      // of the CityEntity
 
       saveContext()
     }
@@ -107,5 +100,40 @@ extension CoreDataService {
     guard managedContext.hasChanges else { return }
     do { try managedContext.save() }
     catch { print(error.localizedDescription) }
+  }
+
+  /// Saving a new `cityModel` in the CoreDataModel.
+  /// - Parameter cityModel: The new city to save.
+  private func saving(_ cityModel: CityModel) async {
+
+    let cityEntity = CityEntity(context: managedContext)
+    cityEntity.name = await cityModel.name
+
+    let weatherEntities = await weatherEntities(with: cityModel)
+
+    cityEntity.weathers = [weatherEntities]
+
+    saveContext()
+  }
+
+  private func weatherEntities(
+    with cityModel: CityModel
+  ) async -> [WeatherEntity] {
+    var weatherEntities = [WeatherEntity]()
+
+    for weatherModel in await cityModel.weathers {
+
+      let weatherEntity = WeatherEntity(context: managedContext)
+      weatherEntity.type = weatherModel.type.rawValue
+      weatherEntity.icon = weatherModel.icon
+      weatherEntity.date = weatherModel.date
+      weatherEntity.temp = weatherModel.temp
+      weatherEntity.tempMin = weatherModel.tempMin
+      weatherEntity.tempMax = weatherModel.tempMax
+      weatherEntity.info = weatherModel.info
+
+      weatherEntities.append(weatherEntity)
+    }
+    return weatherEntities
   }
 }

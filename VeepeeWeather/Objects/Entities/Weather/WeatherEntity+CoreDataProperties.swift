@@ -2,7 +2,7 @@
 //  WeatherEntity+CoreDataProperties.swift
 //  VeepeeWeather
 //
-//  Created by Roland Lariotte on 24/09/2022.
+//  Created by Roland Lariotte on 25/09/2022.
 //
 //
 
@@ -22,5 +22,5 @@ extension WeatherEntity {
   @NSManaged public var tempMax: Double
   @NSManaged public var tempMin: Double
   @NSManaged public var type: String?
-  @NSManaged public var cities: CityEntity?
+  @NSManaged public var city: CityEntity?
 }

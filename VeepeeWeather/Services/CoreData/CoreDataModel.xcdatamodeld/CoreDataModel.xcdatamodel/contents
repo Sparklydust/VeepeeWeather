@@ -2,9 +2,9 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CityEntity" representedClassName="CityEntity" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="weathers" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="WeatherEntity" inverseName="cities" inverseEntity="WeatherEntity"/>
+        <relationship name="weathers" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="WeatherEntity" inverseName="city" inverseEntity="WeatherEntity"/>
     </entity>
-    <entity name="WeatherEntity" representedClassName="WeatherEntity" parentEntity="CityEntity" syncable="YES">
+    <entity name="WeatherEntity" representedClassName="WeatherEntity" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="icon" optional="YES" attributeType="String"/>
         <attribute name="info" optional="YES" attributeType="String"/>
@@ -12,6 +12,6 @@
         <attribute name="tempMax" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="tempMin" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="type" optional="YES" attributeType="String"/>
-        <relationship name="cities" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CityEntity" inverseName="weathers" inverseEntity="CityEntity"/>
+        <relationship name="city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CityEntity" inverseName="weathers" inverseEntity="CityEntity"/>
     </entity>
 </model>

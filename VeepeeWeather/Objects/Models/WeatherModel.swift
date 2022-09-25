@@ -18,4 +18,33 @@ struct WeatherModel: Identifiable {
   var tempMin: Double
   var tempMax: Double
   var info: String
+
+  init(id: UUID,
+       type: MainEnum,
+       icon: String,
+       date: Date,
+       temp: Double,
+       tempMin: Double,
+       tempMax: Double,
+       info: String) {
+    self.id = id
+    self.type = type
+    self.icon = icon
+    self.date = date
+    self.temp = temp
+    self.tempMin = tempMin
+    self.tempMax = tempMax
+    self.info = info
+  }
+
+  init(with weatherEntity: WeatherEntity) {
+    self.id = UUID()
+    self.type = MainEnum(rawValue: weatherEntity.type ?? String()) ?? .undefined
+    self.icon = weatherEntity.icon ?? String()
+    self.date = weatherEntity.date ?? Date()
+    self.temp = weatherEntity.temp
+    self.tempMin = weatherEntity.tempMin
+    self.tempMax = weatherEntity.tempMax
+    self.info = weatherEntity.info ?? String()
+  }
 }

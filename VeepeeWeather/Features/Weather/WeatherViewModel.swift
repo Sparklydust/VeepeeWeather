@@ -59,21 +59,8 @@ extension WeatherViewModel {
     do {
       let data = try await serverSideService.getParisForecast()
       await cityModel.update(with: data)
-      coreDataService.save(city: data)
-    } catch {
-      getSavedForecast()
-      weatherAlert = .serverSideError
+      await coreDataService.save(cityModel)
     }
-  }
-}
-
-// MARK: - CoreData
-extension WeatherViewModel {
-
-  /// Fetch saved city and its associated forecast from ``CoreDataModel``.
-  private func getSavedForecast() {
-    guard let cityEntity = coreDataService.fetchCities().first
-    else { return }
-    cityModel.update(with: cityEntity)
+    catch { weatherAlert = .serverSideError }
   }
 }

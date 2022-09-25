@@ -56,4 +56,5 @@ enum MainEnum: String, Codable, Equatable {
   case clear = "Clear"
   case clouds = "Clouds"
   case rain = "Rain"
+  case undefined = ""
 }
