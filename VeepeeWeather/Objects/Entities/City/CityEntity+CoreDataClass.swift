@@ -2,7 +2,7 @@
 //  CityEntity+CoreDataClass.swift
 //  VeepeeWeather
 //
-//  Created by Roland Lariotte on 24/09/2022.
+//  Created by Roland Lariotte on 25/09/2022.
 //
 //
 

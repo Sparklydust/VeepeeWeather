@@ -59,7 +59,7 @@ extension CoreDataService {
   func save(_ cityModel: CityModel) async {
     let cities = fetchCities()
     guard cities.isEmpty else {
-      update(cities.first!, with: cityModel)
+      await update(cities.first!, with: cityModel)
       return
     }
     await saving(cityModel)
@@ -84,12 +84,14 @@ extension CoreDataService {
   func update(
     _ cityEntity: CityEntity,
     with cityModel: CityModel
-  ) {
-    managedContext.performAndWait {
-
-
-      saveContext()
+  ) async {
+    for weather in cityEntity.weathers ?? [] {
+      managedContext.delete(weather as! NSManagedObject)
     }
+    let newWeatherEntities = await weatherEntities(with: cityModel)
+    cityEntity.weathers = NSOrderedSet(array: newWeatherEntities)
+
+    saveContext()
   }
 }
 
@@ -107,11 +109,10 @@ extension CoreDataService {
   private func saving(_ cityModel: CityModel) async {
 
     let cityEntity = CityEntity(context: managedContext)
-    cityEntity.name = await cityModel.name
-
     let weatherEntities = await weatherEntities(with: cityModel)
 
-    cityEntity.weathers = [weatherEntities]
+    cityEntity.name = await cityModel.name
+    cityEntity.weathers = NSOrderedSet(array: weatherEntities)
 
     saveContext()
   }

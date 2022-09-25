@@ -56,6 +56,10 @@ extension WeatherViewModel {
     showProgressView(true)
     defer { showProgressView(false) }
 
+    if let cityEntity = coreDataService.fetchCities().first {
+      cityModel.update(with: cityEntity)
+    }
+
     do {
       let data = try await serverSideService.getParisForecast()
       await cityModel.update(with: data)

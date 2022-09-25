@@ -27,8 +27,12 @@ extension CityModel {
   @MainActor func update(with cityEntity: CityEntity) {
 
     name = cityEntity.name ?? "No Data"
+    weathers.removeAll()
 
-    // TODO: Update CityModel with the CityEntity.
+    for weatherEntity in cityEntity.weathers ?? [] {
+      let weather = WeatherModel(with: weatherEntity as! WeatherEntity)
+      weathers.append(weather)
+    }
   }
 
   /// Update the ``CityModel`` published values to be
