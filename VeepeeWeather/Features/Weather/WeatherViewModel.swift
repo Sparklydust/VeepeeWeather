@@ -32,6 +32,8 @@ final class WeatherViewModel: ObservableObject {
 // MARK: - Actions
 extension WeatherViewModel {
 
+  /// Populate the ``WeatherDetailsView`` with the selected weather.
+  /// - Parameter weather: The weather forecast to populate.
   func showDetailsView(for weather: WeatherModel) {
     cityModel.selectedWeather = weather
     showDetails = true
@@ -56,9 +58,7 @@ extension WeatherViewModel {
     showProgressView(true)
     defer { showProgressView(false) }
 
-    if let cityEntity = coreDataService.fetchCities().first {
-      cityModel.update(with: cityEntity)
-    }
+    populateSavedData()
 
     do {
       let data = try await serverSideService.getParisForecast()
@@ -66,5 +66,11 @@ extension WeatherViewModel {
       await coreDataService.save(cityModel)
     }
     catch { weatherAlert = .serverSideError }
+  }
+
+  /// Fetch saved ``CityEntity`` and populate them if any. 
+  private func populateSavedData() {
+    guard let cityEntity = coreDataService.fetchCities().first else { return }
+    cityModel.update(with: cityEntity)
   }
 }

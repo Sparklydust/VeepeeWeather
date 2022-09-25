@@ -17,7 +17,7 @@ struct TabBarNavigationView: View {
     TabView(selection: $selectedTabBar) {
       WeatherView()
         .tabItem { Label("Weather", systemImage: "thermometer.sun.fill") }
-        .tag("weather")
+        .tag(NavigationItem.weather)
     }
   }
 }

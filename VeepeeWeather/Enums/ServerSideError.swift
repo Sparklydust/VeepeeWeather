@@ -14,4 +14,3 @@ enum ServerSideError: String, Error, Equatable {
   case invalidResponse
   case unknown
 }
-

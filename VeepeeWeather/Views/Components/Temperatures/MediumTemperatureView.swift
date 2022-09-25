@@ -13,7 +13,7 @@ struct MediumTemperatureView: View {
 
   var body: some View {
     HStack {
-      Text(String(format: "%.0f", weather.tempMin))
+      Text(String(format: "%.1f", weather.tempMin))
 
       Capsule(style: .continuous)
         .fill(LinearGradient(
@@ -27,7 +27,7 @@ struct MediumTemperatureView: View {
             .offset(y: -32)
         }
 
-      Text(String(format: "%.0f", weather.tempMax))
+      Text(String(format: "%.1f", weather.tempMax))
     }
     .padding(16)
   }

@@ -15,4 +15,3 @@ extension Color {
 
   static let systemGroupedBackground = Color(UIColor.systemGroupedBackground)
 }
-

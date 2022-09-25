@@ -42,7 +42,6 @@ struct WeatherView: View {
         }
         .navigationTitle(Text(vm.cityModel.name))
         .navigationBarTitleDisplayMode(.large)
-        .padding(.top, 40)
       }
       MainProgressView(isAnimating: vm.isLoading)
     }
